@@ -67,6 +67,10 @@ contract HotOrNot {
         }
     }
 
+    function getDetails() public view returns (uint, uint, string) {
+        return (yesAmount, noAmount, imageURL);
+    }
+
     modifier requireOpen() {
         require(!isClosed, "Already closed");
         _;
