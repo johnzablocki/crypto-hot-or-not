@@ -2,6 +2,15 @@
 
 This repository contains a demo Dapp for my talk on Programming the Ethereum Blockchain, first presented at the [New England Microsoft Developer Meetup](https://www.meetup.com/NE-MSFT-Devs/events/254986942/) on 2018-10-04.
 
+## Dapp Premise
+
+Crypto Hot or Not is a spin on the old web 1.0 site Am I Hot or Not.  At current, a user creates a contest by entering a
+minimum vote amount, a link to a picture, and the number of votes the contest receives before closing out.
+
+Voters then send ether to the contest by way of a yes or no vote.  If a contest closes, and the constest owner is found
+to be hot, then the owner gets to keep the money.  A future variant will distribute the funds raised in a losing contest
+to a charity and the factory owner.
+
 ## Dependencies
 
 Most dependencies are installed with npm (or yarn).  That said, you'll need node and/or yarn.
