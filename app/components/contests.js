@@ -9,14 +9,13 @@ export default class Contests extends React.Component {
         super(props);
     }
 
-
     renderHotOrNots() {
         const items = this.props.items.map((address) => {
             return {
                 header: address,
                 fluid: true,
                 description: (
-                    <Link href={`/contest?a=${address}`} as={`/contest/${address}`}>
+                    <Link href={`/contest?a=${address}`} as={`/c/${address}`}>
                         <Button basic color='green' style={{margin:'10px'}}>
                             <p>Vote</p>
                         </Button>

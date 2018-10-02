@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.3",
     "fs-extra": "^7.0.0",
     "ganache-cli": "^6.1.8",
     "ganache-core": "^2.2.1",
@@ -20,6 +21,6 @@
     "test": "mocha",
     "dev": "next app",
     "build": "next build app",
-    "start": "next start app"
+    "start": "node app/server.js"
   }
 }

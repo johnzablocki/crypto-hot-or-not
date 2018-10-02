@@ -9,7 +9,7 @@ class NewContest extends React.Component {
 
     state = {
         url: 'https://i.telegraph.co.uk/multimedia/archive/03150/thatcher-bbc_3150455b.jpg',
-        minAmount: '1',
+        minAmount: '100000000000000',
         maxVoters: 10,
         complete: false,
         sending: false
@@ -48,7 +48,7 @@ class NewContest extends React.Component {
                             <Form onSubmit={this.onSubmit} >
                                 <Form.Group>
                                     <Form.Field>
-                                        <label>Minimum vote amount (in ether)</label>
+                                        <label>Minimum vote amount (in wei)</label>
                                         <input
                                             type='number'
                                             value={this.state.minAmount}

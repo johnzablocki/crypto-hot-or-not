@@ -67,8 +67,8 @@ contract HotOrNot {
         }
     }
 
-    function getDetails() public view returns (uint, uint, string) {
-        return (yesAmount, noAmount, imageURL);
+    function getDetails() public view returns (uint, uint, string, bool) {
+        return (yesAmount, noAmount, imageURL, isClosed);
     }
 
     modifier requireOpen() {

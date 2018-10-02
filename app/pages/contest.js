@@ -6,23 +6,34 @@ import web3 from '../../ethereum/web3';
 
 class Contest extends React.Component {
 
-    state = { amount: '1', done: false };
+    state = { amount: '.00011', done: false };
 
     static async getInitialProps(props) {
         const contract = HotOrNot(props.query.a);
         const hotOrNot = await contract.methods.getDetails().call();
-        return { hotOrNot: hotOrNot, contract: contract }
+        return {
+            hotOrNot: hotOrNot
+        }
+    }
+
+    componentDidMount() {
+        const contract = HotOrNot(this.props.router.query.a);
+        this.setState({
+            contract: contract,
+            yesAmount: web3.utils.fromWei(this.props.hotOrNot[0], 'ether'),
+            noAmount: web3.utils.fromWei(this.props.hotOrNot[1], 'ether')
+        });
     }
 
     vote = async (val) => {
         const accounts = await web3.eth.getAccounts();
         if (val === 'y') {
-            await this.props.contract.methods.voteYes().send({
+            await this.state.contract.methods.voteYes().send({
                 from: accounts[0],
                 value: web3.utils.toWei(this.state.amount, 'ether')
             });
         } else {
-            await this.props.contract.methods.voteNo().send({
+            await this.state.contract.methods.voteNo().send({
                 from: accounts[0],
                 value: web3.utils.toWei(this.state.amount, 'ether')
             });
@@ -40,12 +51,11 @@ class Contest extends React.Component {
                                 <Header as='h1' size='huge'>Vote on this Contest</Header>
                                 <Card fluid>
                                     <Card.Header>
-                                        <h2>{this.props.contract.options.address}</h2>
+                                        <h2>{this.props.address}</h2>
                                     </Card.Header>
                                     <Card.Meta>
                                         <h2>
-                                            Yes: {web3.utils.fromWei(this.props.hotOrNot[0], 'ether')},
-                                            No: {web3.utils.fromWei(this.props.hotOrNot[1], 'ether')}
+                                            Yes: {this.state.yesAmount}, No: {this.state.noAmount}
                                         </h2>
                                     </Card.Meta>
                                     <Card.Description>
