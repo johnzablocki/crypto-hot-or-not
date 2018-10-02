@@ -64,7 +64,7 @@ class NewContest extends React.Component {
                                 <Form.Field>
                                     <label />
                                     <input value={this.state.url}
-                                        onChange={event => this.setState({ value: event.target.value })}
+                                        onChange={event => this.setState({ url: event.target.value })}
                                         type='url' />
                                 </Form.Field>
                                 <Form.Button content={this.state.sending ? 'Wait' : 'Submit'} />
